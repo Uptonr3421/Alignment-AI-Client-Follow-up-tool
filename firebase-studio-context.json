@@ -1,0 +1,100 @@
+{
+  "project": {
+    "name": "LGBTQ Center Client Automation",
+    "description": "Client follow-up automation system for Cleveland LGBTQ Center - Firebase hosted",
+    "repository": "https://github.com/Uptonr3421/Alignment-AI-Client-Follow-up-tool",
+    "branch": "main",
+    "type": "full-stack",
+    "framework": "react-vite-firebase"
+  },
+  "architecture": {
+    "frontend": {
+      "path": "src/web/frontend",
+      "framework": "React 18 + Vite",
+      "styling": "Tailwind CSS",
+      "buildCommand": "npm run build",
+      "outputDirectory": "dist",
+      "entryPoint": "index.html"
+    },
+    "backend": {
+      "path": "functions",
+      "runtime": "nodejs18",
+      "triggers": ["http", "firestore", "scheduled"],
+      "entryPoint": "src/index.ts"
+    },
+    "database": {
+      "type": "firestore",
+      "rules": "firestore.rules",
+      "indexes": "firestore.indexes.json",
+      "collections": ["clients", "emailSequences", "templates", "settings", "users"]
+    },
+    "hosting": {
+      "spa": true,
+      "rewrites": [
+        {"source": "/api/**", "function": "api"},
+        {"source": "**", "destination": "/index.html"}
+      ]
+    }
+  },
+  "features": {
+    "authentication": {
+      "provider": "firebase-auth",
+      "methods": ["email-password", "google-oauth"],
+      "note": "Enable Google sign-in for Gmail integration"
+    },
+    "emailAutomation": {
+      "provider": "gmail-api",
+      "sequences": ["welcome", "reminder", "noshow", "reengagement"],
+      "oauthRequired": true,
+      "note": "Requires Google Cloud OAuth credentials post-deploy"
+    },
+    "scheduledFunctions": {
+      "enabled": true,
+      "schedule": "every 1 minutes",
+      "purpose": "Process pending emails"
+    }
+  },
+  "deployment": {
+    "steps": [
+      "Install dependencies: npm install (root + functions)",
+      "Build frontend: cd src/web/frontend && npm run build",
+      "Deploy: firebase deploy"
+    ],
+    "environmentVariables": [
+      "GMAIL_CLIENT_ID",
+      "GMAIL_CLIENT_SECRET",
+      "ENCRYPTION_KEY"
+    ],
+    "postDeploy": [
+      "Enable Firebase Authentication (Email/Password + Google)",
+      "Configure Gmail OAuth in Google Cloud Console",
+      "Set environment variables in Firebase Functions",
+      "Test email sending"
+    ]
+  },
+  "targetUser": {
+    "organization": "Cleveland LGBTQ Center",
+    "technicalLevel": "non-technical",
+    "setupRequirement": "zero-config",
+    "note": "Staff should not need technical knowledge to use"
+  },
+  "standards": {
+    "colors": {
+      "primary": "#E6511A",
+      "dark": "#252422",
+      "light": "#f5f5f5"
+    },
+    "accessibility": "WCAG 2.1 AA",
+    "typescript": "strict mode",
+    "license": "MIT"
+  },
+  "agents": {
+    "instructions": [
+      "Use existing component patterns in src/web/frontend/src/components/",
+      "Follow Firestore security rules - users can only access their own data",
+      "Add loading states and error handling for all async operations",
+      "Use Firebase SDK v9+ modular syntax",
+      "Maintain zero-config philosophy - no manual setup required for users"
+    ]
+  }
+}
