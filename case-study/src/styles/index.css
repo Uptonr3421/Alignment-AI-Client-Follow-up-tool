@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    @apply bg-mist text-charcoal font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+  
+  /* Focus styles for accessibility - WCAG 2.2 AAA compliant */
+  *:focus-visible {
+    @apply outline-none;
+    box-shadow: 0 0 0 3px rgba(230, 81, 26, 0.5);
+    border-radius: 2px;
+  }
+  
+  /* Skip link for keyboard navigation */
+  .skip-link {
+    @apply absolute -top-10 left-0 bg-orange text-white px-4 py-2 z-50 transition-all;
+  }
+  
+  .skip-link:focus {
+    @apply top-0;
+  }
+  
+  /* Screen reader only content */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+  
+  /* Image optimization */
+  img {
+    @apply max-w-full h-auto;
+    content-visibility: auto;
+  }
+  
+  /* Lazy loading placeholder */
+  img[loading="lazy"] {
+    @apply bg-mist-200;
+  }
+  
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    *:focus-visible {
+      outline: 3px solid currentColor;
+      outline-offset: 2px;
+      box-shadow: none;
+    }
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Whisper-quiet motion */
+  .motion-whisper {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Lightbox styles */
+.lightbox-overlay {
+  @apply fixed inset-0 z-50 bg-charcoal/95 backdrop-blur-sm;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-content {
+  @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-image {
+  @apply max-w-full max-h-full object-contain rounded-lg shadow-2xl;
+}
+
+.lightbox-caption {
+  @apply absolute bottom-0 left-0 right-0 p-6 text-white text-center;
+  background: linear-gradient(to top, rgba(37, 36, 34, 0.9), transparent);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-mist-300;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-charcoal-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-charcoal-400;
+}
+
+/* Selection */
+::selection {
+  @apply bg-orange-200 text-charcoal;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
