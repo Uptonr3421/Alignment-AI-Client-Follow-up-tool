@@ -222,7 +222,7 @@ firebase deploy
 - Automatic backups
 
 ### Authentication (Firebase Auth)
-- Email/password authentication
+- Google OAuth Sign-In
 - Secure session management
 - Password reset flow
 - User management
@@ -307,8 +307,8 @@ match /clients/{clientId} {
 
 ### Immediate (Day 1)
 1. ✅ Deploy to Firebase
-2. ✅ Enable Email/Password authentication
-3. ✅ Create OAuth credentials
+2. ✅ Enable Google Sign-In authentication
+3. ✅ Create OAuth credentials for Gmail
 4. ✅ Configure Gmail integration
 5. ✅ Test all features
 6. ✅ Create first admin account

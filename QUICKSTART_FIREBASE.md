@@ -123,11 +123,11 @@ cd Alignment-AI-Client-Follow-up-tool
 
 1. Go to Firebase Console → Authentication
 2. Click "Get started"
-3. Click on "Email/Password"
-4. Toggle "Enable"
+3. Click on "Google"
+4. Enable the Google sign-in provider
 5. Click "Save"
 
-**Why?** Users need to sign in to access the application.
+**Why?** Staff will sign in with their Google accounts.
 
 ---
 

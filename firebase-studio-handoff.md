@@ -72,8 +72,8 @@ After deployment completes:
 
 1. **Enable Authentication**
    - Go to Firebase Console → Authentication
-   - Enable "Email/Password" sign-in method
-   - Enable "Google" sign-in (for Gmail integration)
+   - Enable "Google" sign-in method
+   - Add authorized domain: cleveland-lgbtq-center.web.app
 
 2. **Configure Gmail OAuth** (See section below)
 

@@ -80,8 +80,9 @@ firebase deploy
 #### Enable Authentication
 1. [ ] Go to Firebase Console → Authentication
 2. [ ] Click "Get Started"
-3. [ ] Enable "Email/Password" sign-in method
-4. [ ] Save changes
+3. [ ] Enable "Google" sign-in provider
+4. [ ] Add authorized domains (if using custom domain)
+5. [ ] Save changes
 
 #### Configure Gmail OAuth
 1. [ ] Go to https://console.cloud.google.com
@@ -113,9 +114,9 @@ firebase deploy
 ## Testing Checklist
 
 ### Authentication Testing
-- [ ] Sign up with email/password works
-- [ ] Sign in with existing account works
-- [ ] Password validation works (minimum 6 characters)
+- [ ] Sign in with Google account works
+- [ ] Google OAuth flow completes successfully
+- [ ] User profile is created automatically
 - [ ] Error messages display correctly
 - [ ] Sign out works
 - [ ] Auth state persists on refresh

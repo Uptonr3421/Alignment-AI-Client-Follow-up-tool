@@ -40,8 +40,8 @@
   "features": {
     "authentication": {
       "provider": "firebase-auth",
-      "methods": ["email-password", "google-oauth"],
-      "note": "Enable Email/Password in Firebase Console after deployment"
+      "methods": ["google-oauth"],
+      "note": "Enable Google sign-in in Firebase Console after deployment"
     },
     "emailAutomation": {
       "provider": "gmail-api",
