@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Layout, Dashboard, ClientList, ClientForm, Settings, Templates, ClientDetail } from './components';
+import { Layout, Dashboard, ClientList, ClientForm, Settings, Templates, ClientDetail, BuildingThisTool } from './components';
 import { SetupWizard } from './components/setup/SetupWizard';
 import { Auth } from './components/Auth';
 import { useFirebaseAuth } from './hooks/useFirebase';
@@ -51,7 +51,7 @@ function LoadingSpinner() {
 function App() {
   const { user, loading: authLoading, isAuthenticated } = useFirebaseAuth();
   const [isSetupComplete, setIsSetupComplete] = useState<boolean | null>(null);
-  const [currentPage, setCurrentPage] = useState<'dashboard' | 'clients' | 'templates' | 'settings'>('dashboard');
+  const [currentPage, setCurrentPage] = useState<'dashboard' | 'clients' | 'templates' | 'settings' | 'building'>('dashboard');
   const [clients, setClients] = useState<Client[]>([]);
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [settings, setSettings] = useState<CenterSettings | null>(null);
@@ -334,6 +334,10 @@ function App() {
             onConnectGmail={handleConnectGmail}
             onDisconnectGmail={handleDisconnectGmail}
           />
+        )}
+
+        {currentPage === 'building' && (
+          <BuildingThisTool />
         )}
 
         {showClientForm && (

@@ -18,7 +18,7 @@
     },
     "backend": {
       "path": "functions",
-      "runtime": "nodejs18",
+      "runtime": "nodejs20",
       "triggers": ["http", "firestore", "scheduled"],
       "entryPoint": "src/index.ts"
     },
@@ -30,6 +30,7 @@
     },
     "hosting": {
       "spa": true,
+      "public": "dist",
       "rewrites": [
         {"source": "/api/**", "function": "api"},
         {"source": "**", "destination": "/index.html"}
@@ -39,8 +40,8 @@
   "features": {
     "authentication": {
       "provider": "firebase-auth",
-      "methods": ["email-password", "google-oauth"],
-      "note": "Enable Google sign-in for Gmail integration"
+      "methods": ["google-oauth"],
+      "note": "Enable Google sign-in in Firebase Console after deployment"
     },
     "emailAutomation": {
       "provider": "gmail-api",
@@ -50,26 +51,38 @@
     },
     "scheduledFunctions": {
       "enabled": true,
-      "schedule": "every 1 minutes",
-      "purpose": "Process pending emails"
+      "schedule": "every 5 minutes",
+      "function": "processScheduledEmails",
+      "purpose": "Process pending emails automatically",
+      "note": "Uses App Engine cron syntax, supported by Firebase Cloud Scheduler"
     }
   },
   "deployment": {
-    "steps": [
-      "Install dependencies: npm install (root + functions)",
-      "Build frontend: cd src/web/frontend && npm run build",
-      "Deploy: firebase deploy"
+    "buildSteps": [
+      "npm install",
+      "cd functions && npm install && cd ..",
+      "cd src/web/frontend && npm install && cd ../../..",
+      "npm run build:firebase"
     ],
+    "deployCommand": "firebase deploy",
     "environmentVariables": [
-      "GMAIL_CLIENT_ID",
-      "GMAIL_CLIENT_SECRET",
-      "ENCRYPTION_KEY"
+      "VITE_FIREBASE_API_KEY",
+      "VITE_FIREBASE_AUTH_DOMAIN",
+      "VITE_FIREBASE_PROJECT_ID",
+      "VITE_FIREBASE_STORAGE_BUCKET",
+      "VITE_FIREBASE_MESSAGING_SENDER_ID",
+      "VITE_FIREBASE_APP_ID"
+    ],
+    "functionsConfig": [
+      "gmail.client_id",
+      "gmail.client_secret"
     ],
     "postDeploy": [
-      "Enable Firebase Authentication (Email/Password + Google)",
-      "Configure Gmail OAuth in Google Cloud Console",
-      "Set environment variables in Firebase Functions",
-      "Test email sending"
+      "Enable Firebase Authentication (Email/Password)",
+      "Create OAuth credentials in Google Cloud Console",
+      "Enable Gmail API",
+      "Set functions config: firebase functions:config:set gmail.client_id=... gmail.client_secret=...",
+      "Redeploy functions: firebase deploy --only functions"
     ]
   },
   "targetUser": {
@@ -77,6 +90,14 @@
     "technicalLevel": "non-technical",
     "setupRequirement": "zero-config",
     "note": "Staff should not need technical knowledge to use"
+  },
+  "freeTier": {
+    "hosting": "10 GB transfer/month",
+    "firestore": "50K reads/day, 20K writes/day, 1 GB storage",
+    "functions": "2M invocations/month, 400K GB-seconds",
+    "authentication": "Unlimited users",
+    "gmail": "1B quota units/day (~10K emails)",
+    "estimatedCapacity": "500-1000 clients, 300+ emails/day"
   },
   "standards": {
     "colors": {
@@ -94,7 +115,10 @@
       "Follow Firestore security rules - users can only access their own data",
       "Add loading states and error handling for all async operations",
       "Use Firebase SDK v9+ modular syntax",
-      "Maintain zero-config philosophy - no manual setup required for users"
+      "Maintain zero-config philosophy - no manual setup required for users",
+      "All dependencies must be within Firebase free tier",
+      "No AI/ML services unless included in free tier",
+      "Use Gmail API for email sending (free)"
     ]
   }
 }
