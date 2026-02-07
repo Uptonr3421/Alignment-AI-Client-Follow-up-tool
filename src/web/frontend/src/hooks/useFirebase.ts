@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { 
   onAuthStateChanged, 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
   signOut,
   User 
 } from 'firebase/auth';
 import { auth } from '../firebase';
+
+const googleProvider = new GoogleAuthProvider();
 
 export function useFirebaseAuth() {
   const [user, setUser] = useState<User | null>(null);
@@ -22,25 +24,17 @@ export function useFirebaseAuth() {
     return () => unsubscribe();
   }, []);
 
-  const signIn = useCallback(async (email: string, password: string) => {
+  const signInWithGoogle = useCallback(async () => {
     try {
       setError(null);
-      const result = await signInWithEmailAndPassword(auth, email, password);
+      setLoading(true);
+      const result = await signInWithPopup(auth, googleProvider);
       return result.user;
     } catch (err: any) {
       setError(err.message);
       throw err;
-    }
-  }, []);
-
-  const signUp = useCallback(async (email: string, password: string) => {
-    try {
-      setError(null);
-      const result = await createUserWithEmailAndPassword(auth, email, password);
-      return result.user;
-    } catch (err: any) {
-      setError(err.message);
-      throw err;
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -57,8 +51,7 @@ export function useFirebaseAuth() {
     user,
     loading,
     error,
-    signIn,
-    signUp,
+    signInWithGoogle,
     logout,
     isAuthenticated: !!user,
   };

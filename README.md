@@ -19,6 +19,23 @@ A complete client follow-up automation system designed specifically for the Clev
 
 **This is a pro bono gift.** The Center owns everything—source code, data, and full rights to modify or distribute.
 
+## 🔐 Authentication & Independence
+
+**Google OAuth Sign-In:**
+- Staff sign in with Google accounts (@lgbtqcleveland.org)
+- No password management required
+- Secure OAuth 2.0 authentication
+- Automatic Gmail integration
+
+**Complete Independence:**
+- ✅ $0/month operational cost (Firebase free tier)
+- ✅ 100% data ownership (your Firebase project)
+- ✅ No dependencies on Alignment AI
+- ✅ MIT License - full rights
+- ✅ Export and migrate anytime
+
+**See:** [CLIENT_INDEPENDENCE_GUIDE.md](CLIENT_INDEPENDENCE_GUIDE.md) for complete details.
+
 ## Quick Start
 
 ### Option 1: Firebase Deployment (Recommended for Production)
