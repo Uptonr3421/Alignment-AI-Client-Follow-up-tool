@@ -9,26 +9,28 @@ import {
   HelpCircle,
   Phone,
   Mail,
-  FileText
+  FileText,
+  Wrench
 } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
   centerName?: string;
-  currentPage?: 'dashboard' | 'clients' | 'templates' | 'settings';
-  onNavigate?: (page: 'dashboard' | 'clients' | 'templates' | 'settings') => void;
+  currentPage?: 'dashboard' | 'clients' | 'templates' | 'settings' | 'building';
+  onNavigate?: (page: 'dashboard' | 'clients' | 'templates' | 'settings' | 'building') => void;
 }
 
 type NavItem = {
   label: string;
   icon: React.ReactNode;
-  id: 'dashboard' | 'clients' | 'templates' | 'settings';
+  id: 'dashboard' | 'clients' | 'templates' | 'settings' | 'building';
 };
 
 const navItems: NavItem[] = [
   { label: 'Dashboard', icon: <LayoutDashboard size={20} />, id: 'dashboard' },
   { label: 'Clients', icon: <Users size={20} />, id: 'clients' },
   { label: 'Templates', icon: <FileText size={20} />, id: 'templates' },
+  { label: 'Building This Tool', icon: <Wrench size={20} />, id: 'building' },
   { label: 'Settings', icon: <Settings size={20} />, id: 'settings' },
 ];
 
@@ -44,7 +46,7 @@ export const Layout: React.FC<LayoutProps> = ({
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
   const closeSidebar = () => setSidebarOpen(false);
 
-  const handleNavClick = (id: 'dashboard' | 'clients' | 'templates' | 'settings') => {
+  const handleNavClick = (id: 'dashboard' | 'clients' | 'templates' | 'settings' | 'building') => {
     onNavigate?.(id);
     closeSidebar();
   };

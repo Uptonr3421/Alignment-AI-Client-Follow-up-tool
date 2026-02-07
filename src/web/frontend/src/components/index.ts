@@ -9,6 +9,7 @@ export { Settings } from './Settings';
 export { Templates } from './Templates';
 export { DeleteConfirmModal } from './DeleteConfirmModal';
 export { Auth } from './Auth';
+export { BuildingThisTool } from './BuildingThisTool';
 
 // Types
 export type { 

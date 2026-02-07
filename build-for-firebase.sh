@@ -126,6 +126,15 @@ fi
 # Copy new dist
 cp -r src/web/frontend/dist ./dist
 print_success "Build output copied to ./dist"
+
+# Copy docs images to dist for the Building This Tool page
+print_status "Copying documentation images..."
+if [ -d "docs" ] && [ -d "dist" ]; then
+    mkdir -p dist/docs
+    cp docs/*.jpg dist/docs/ 2>/dev/null || true
+    cp docs/*.png dist/docs/ 2>/dev/null || true
+    print_success "Documentation images copied"
+fi
 echo ""
 
 # Verify critical files exist

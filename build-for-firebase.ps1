@@ -135,6 +135,15 @@ if (Test-Path "dist") {
 # Copy new dist
 Copy-Item -Path "src\web\frontend\dist" -Destination "dist" -Recurse
 Write-Success "Build output copied to .\dist"
+
+# Copy docs images to dist for the Building This Tool page
+Write-Status "Copying documentation images..."
+if ((Test-Path "docs") -and (Test-Path "dist")) {
+    New-Item -ItemType Directory -Path "dist\docs" -Force | Out-Null
+    Copy-Item -Path "docs\*.jpg" -Destination "dist\docs\" -ErrorAction SilentlyContinue
+    Copy-Item -Path "docs\*.png" -Destination "dist\docs\" -ErrorAction SilentlyContinue
+    Write-Success "Documentation images copied"
+}
 Write-Host ""
 
 # Verify critical files exist
