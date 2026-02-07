@@ -19,21 +19,44 @@ A complete client follow-up automation system designed specifically for the Clev
 
 **This is a pro bono gift.** The Center owns everything—source code, data, and full rights to modify or distribute.
 
-## Quick Start (5 Minutes)
+## Quick Start
 
-### Option 1: Windows Desktop App (Recommended)
+### Option 1: Firebase Deployment (Recommended for Production)
+
+**Automated Installation:**
+```bash
+git clone https://github.com/Uptonr3421/Alignment-AI-Client-Follow-up-tool.git
+cd Alignment-AI-Client-Follow-up-tool
+./install-firebase.sh
+```
+
+**Or using Firebase Studio (No-Code):**
+1. Go to [Firebase Studio](https://firebase.studio)
+2. Import from GitHub: `Uptonr3421/Alignment-AI-Client-Follow-up-tool`
+3. Let AI configure and deploy automatically
+
+See [firebase-studio-handoff.md](firebase-studio-handoff.md) for complete Firebase setup.
+
+### Option 2: Local Development
+
+```bash
+# Install dependencies
+npm install
+cd functions && npm install && cd ..
+cd src/web/frontend && npm install && cd ../../..
+
+# Start Firebase emulators
+npm run emulators
+
+# In another terminal, start frontend
+cd src/web/frontend && npm run dev
+```
+
+### Option 3: Windows Desktop App
 
 1. Download `LGBTQ-Center-Automation-Setup.exe` from [Releases](../../releases)
 2. Double-click to install (works like any Windows program)
 3. Launch and follow the setup wizard
-
-### Option 2: Web Application
-
-1. Clone this repository
-2. Run `npm install` then `npm run dev`
-3. Open http://localhost:3000
-
-See [QUICK_START.md](docs/QUICK_START.md) for detailed instructions.
 
 ## What It Does
 
@@ -50,31 +73,47 @@ See [QUICK_START.md](docs/QUICK_START.md) for detailed instructions.
 
 ```
 ┌─────────────────┐     ┌─────────────────┐
-│  Desktop App    │     │   Web App       │
-│  (Tauri + React)│     │ (React + Express)│
+│  Desktop App    │     │  Firebase Web   │
+│  (Tauri + React)│     │  (React + Vite) │
 └────────┬────────┘     └────────┬────────┘
          │                       │
-         └───────────┬───────────┘
-                     │
-         ┌───────────┴───────────┐
-         │   SQLite / PostgreSQL  │
-         │   Gmail API            │
-         └───────────────────────┘
+         │                       ▼
+         │              ┌──────────────────┐
+         │              │ Firebase Hosting │
+         │              │ Cloud Functions  │
+         │              │ Firestore DB     │
+         │              │ Firebase Auth    │
+         ▼              └──────────────────┘
+  ┌──────────────┐              │
+  │   SQLite     │              ▼
+  │  (Local DB)  │        ┌──────────┐
+  └──────────────┘        │ Gmail API│
+                          └──────────┘
 ```
 
-- **Desktop**: Local SQLite, works offline, single computer
-- **Web**: PostgreSQL, multi-user, cloud-hosted
+- **Firebase (Production)**: Cloud Firestore, serverless functions, zero config
+- **Desktop (Offline)**: Local SQLite, works offline, single computer
+- **Shared**: Gmail API for both deployment options
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript, Tailwind CSS
-- **Desktop**: Tauri (Rust)
-- **Backend**: Node.js, Express
-- **Database**: SQLite (desktop) / PostgreSQL (web)
-- **Email**: Gmail API with SMTP fallback
+- **Frontend**: React 18, TypeScript, Tailwind CSS, Vite
+- **Backend**: Firebase Cloud Functions (Node.js)
+- **Database**: Cloud Firestore (production) / SQLite (desktop)
+- **Hosting**: Firebase Hosting
+- **Authentication**: Firebase Auth
+- **Email**: Gmail API with OAuth 2.0
+- **Desktop**: Tauri (Rust) - optional offline mode
 
 ## Documentation
 
+**Deployment & Setup:**
+- [Firebase Studio Handoff Guide](firebase-studio-handoff.md) - Complete Firebase deployment instructions
+- [Firebase Setup](FIREBASE_SETUP.md) - Quick Firebase commands
+- [Firebase Deployment](FIREBASE_DEPLOYMENT.md) - Detailed deployment guide
+- [Deployment Checklist](DEPLOYMENT_CHECKLIST_FIREBASE.md) - Step-by-step checklist
+
+**User Documentation:**
 - [User Guide](docs/USER_GUIDE.md) - Complete usage instructions
 - [Troubleshooting](docs/TROUBLESHOOTING.md) - Common issues and fixes
 - [Quick Start](docs/QUICK_START.md) - Get running fast
