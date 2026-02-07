@@ -9,6 +9,24 @@
 
 ---
 
+Image descriptions for gallery use on building this app 1-taking-the-models-advice-good-alignment-islknowing-your-strengths-and-trusting-theres-when-appropriate.jpg - Asking the model and architectural question at this point about going forward with the build as we build it out on our local machine. And deferring to its expertise. Alignment is all about knowing when to step back and trust your tools. If you have the right tools, this is simple.. 
+
+2-stepping-in.jpg - In this image the model gets a little bit overzealous about pressing forward with the project. They overlook a key aspect. What is the whole project actually built on? As we were standing by within the build, we immediately terminated the continuation of the agents of process and intervene to reground the model.. 
+
+3-agentic-autoheal-technology-deployed-on-the-fly.jpg - During the debugging phase, we were running an orchestration of three parallel agents. With one orchestrator. In the previous Sprint. We had seen something a little unusual. One of our agents actually went down. Mid Sprint. While the other two continue to run autonomously. We intervened on the fly and installed a guard rail with one requirement. If one agent went down, the other two were to be stopped by the orchestrator, rerouted to repair the faulty agent. And get him back online and then continue on with their tasks. In this screenshot you can see that guardrail functioning as intended.
+
+4-inviting-agent-swam-to-elevate-work-quality-and-installation-ease-and-stability.jpg - It may seem harsh, but sometimes when you're working with AI. To conserve on tokens, they will just give you the bare minimum effort. In this screenshot. I spot this head on with the styling of the output and stop them in their tracks and. Invite them to elevate. Their work. They do. 
+
+
+5-getting-called-out-for-not-keeping-up-as-a-human.jpg - In this humorous screenshot, the orchestrator, after finishing their Sprint calls me out swiftly about not fulfilling my end of the task. Creating a new Github repo for these files to live in. I can't expect. The essential foreman of the construction site. That is my code. To be tough on his workers and not be tough on me too, I very quickly got that repo online :) 
+
+6-The_Human_In_the_loop_difference_catch_claude_making_a_huge_error_mistaking_a_vital_fallback_connection_for_software_with_a_hallucinated_feature.jpg
+We brought in Claude Sonnet to help guide our agents on their final debugging pass prior to bringing it into a more powerful cloud platform for final deployment. Normally Claude is amazing at this, but tonight he must have been having an off night. Part of the benefit of hiring an AI firm that's worked with AI long enough. Is we can spot hallucinations when there. Pretty much invisible to other people in this particular situation. I asked Claude to include information that I knew for a fact would require a tool call out. A tool call is something like using the Internet. Maybe hooking into a connector like Canva? What makes them unique? And the only reason I spotted it was because they're displayed as they occur. In this particular situation, I gave Claude a task requiring a tool call. He output my results, but he never did that tool call. Therefore we knew he was hallucinating instantly. I called him out on it and he quickly course corrected.
+7-claude_back_on_track!!.jpg - the screen shot of claude back on track!
+
+
+8-claude_scipting_the_cleanup_with_loyalty.jpg - One thing people don't realize is that AI are huge with loyalty and they're huge with buying into roles. If you give them a roll and something to rally around, they will do it. In this entire. Separate instance, we brought in AAI that we believe is a very strong writer in this area to prepare our final sweep prompt for this app prior to going to the cloud..
+
 ## Executive Summary (For Case Study)
 
 **The Challenge:**
@@ -24,7 +42,7 @@ Alignment AI built and delivered a complete client follow-up automation system p
 - **Ownership:** Center owns full source code (MIT license)
 
 ---
-
+w
 ## Key Metrics for Case Study
 
 ### Before Automation
