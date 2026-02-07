@@ -288,7 +288,6 @@ Your client automation system is now live and ready to use.
 If you need assistance:
 - 📖 Full guide: See `firebase-studio-handoff.md`
 - 📧 Email: hello@alignment-ai.io
-- 📞 Phone: 216-200-7861
 - 🐛 Issues: GitHub issues page
 
 ---

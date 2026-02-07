@@ -399,7 +399,6 @@ To update the application:
 
 **Developer Contact:**
 - Alignment AI: hello@alignment-ai.io
-- Phone: 216-200-7861
 - GitHub: https://github.com/Uptonr3421/Alignment-AI-Client-Follow-up-tool
 
 ---

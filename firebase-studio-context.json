@@ -53,7 +53,8 @@
       "enabled": true,
       "schedule": "every 5 minutes",
       "function": "processScheduledEmails",
-      "purpose": "Process pending emails automatically"
+      "purpose": "Process pending emails automatically",
+      "note": "Uses App Engine cron syntax, supported by Firebase Cloud Scheduler"
     }
   },
   "deployment": {

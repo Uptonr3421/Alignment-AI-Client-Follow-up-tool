@@ -372,7 +372,6 @@ With free tier limits:
 
 **Technical Support:**
 - Alignment AI: hello@alignment-ai.io
-- Phone: 216-200-7861
 - GitHub Issues: https://github.com/Uptonr3421/Alignment-AI-Client-Follow-up-tool/issues
 
 **Firebase Support:**
