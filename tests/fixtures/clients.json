@@ -1,0 +1,28 @@
+[
+  {
+    "id": "test-001",
+    "firstName": "Alex",
+    "lastName": "Johnson",
+    "email": "alex.johnson@example.com",
+    "phone": "216-555-0101",
+    "intakeDate": "2026-02-01",
+    "appointmentDate": "2026-02-10T14:00:00Z",
+    "status": "active",
+    "notes": "First-time client",
+    "createdAt": "2026-02-01T10:00:00Z",
+    "updatedAt": "2026-02-01T10:00:00Z"
+  },
+  {
+    "id": "test-002",
+    "firstName": "Sam",
+    "lastName": "Rivera",
+    "email": "sam.rivera@example.com",
+    "phone": "216-555-0102",
+    "intakeDate": "2026-01-15",
+    "appointmentDate": "2026-01-20T10:00:00Z",
+    "status": "completed",
+    "notes": "Follow-up completed",
+    "createdAt": "2026-01-15T09:00:00Z",
+    "updatedAt": "2026-01-25T16:00:00Z"
+  }
+]

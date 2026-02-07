@@ -1,0 +1,134 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isStaffOfCenter(centerId) {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/centers/$(centerId)/users/$(request.auth.uid));
+    }
+    
+    function isAdminOfCenter(centerId) {
+      return isStaffOfCenter(centerId) &&
+        get(/databases/$(database)/documents/centers/$(centerId)/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function getUserData(centerId) {
+      return get(/databases/$(database)/documents/centers/$(centerId)/users/$(request.auth.uid)).data;
+    }
+    
+    function isUserActive(centerId) {
+      return isStaffOfCenter(centerId) && getUserData(centerId).isActive == true;
+    }
+    
+    function isOwnerOfResource(userId) {
+      return request.auth.uid == userId;
+    }
+    
+    // Centers collection
+    match /centers/{centerId} {
+      // Only Alignment AI admins can create centers
+      allow create: if false;
+      
+      // Staff can read their center's info
+      allow read: if isUserActive(centerId);
+      
+      // Only admins can update center info
+      allow update: if isAdminOfCenter(centerId);
+      
+      // Cannot delete centers
+      allow delete: if false;
+      
+      // Users subcollection (staff accounts)
+      match /users/{userId} {
+        // Users can read their own data, admins can read all
+        allow read: if isUserActive(centerId) && 
+          (isOwnerOfResource(userId) || isAdminOfCenter(centerId));
+        
+        // Users can update their own profile (except role)
+        allow update: if isUserActive(centerId) && 
+          isOwnerOfResource(userId) && 
+          !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'gmailToken']);
+        
+        // Only admins can create/delete staff and update roles
+        allow create, delete: if isAdminOfCenter(centerId);
+        allow update: if isAdminOfCenter(centerId) && 
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'isActive']);
+      }
+      
+      // Clients subcollection
+      match /clients/{clientId} {
+        // All active staff can read clients
+        allow read: if isUserActive(centerId);
+        
+        // All active staff can create clients
+        allow create: if isUserActive(centerId) &&
+          request.resource.data.createdBy == request.auth.uid;
+        
+        // Staff can update clients (with audit fields)
+        allow update: if isUserActive(centerId) &&
+          request.resource.data.updatedBy == request.auth.uid;
+        
+        // Only admins can delete clients
+        allow delete: if isAdminOfCenter(centerId);
+      }
+      
+      // Email sequences subcollection
+      match /emailSequences/{sequenceId} {
+        // Staff can read sequences for their clients
+        allow read: if isUserActive(centerId);
+        
+        // System creates sequences (via Cloud Functions)
+        allow create: if isUserActive(centerId);
+        
+        // Staff can update (cancel, reschedule)
+        allow update: if isUserActive(centerId) &&
+          (resource.data.createdBy == request.auth.uid || isAdminOfCenter(centerId));
+        
+        // Only admins can delete
+        allow delete: if isAdminOfCenter(centerId);
+      }
+      
+      // Templates subcollection
+      match /templates/{templateId} {
+        // All staff can read templates
+        allow read: if isUserActive(centerId);
+        
+        // All staff can create templates
+        allow create: if isUserActive(centerId);
+        
+        // Staff can update their own templates, admins can update any
+        allow update: if isUserActive(centerId) &&
+          (resource.data.createdBy == request.auth.uid || isAdminOfCenter(centerId));
+        
+        // Only admins can delete templates
+        allow delete: if isAdminOfCenter(centerId);
+      }
+      
+      // Settings subcollection
+      match /settings/{settingsId} {
+        // All staff can read settings
+        allow read: if isUserActive(centerId);
+        
+        // Only admins can modify settings
+        allow write: if isAdminOfCenter(centerId);
+      }
+      
+      // Activity logs subcollection
+      match /activityLogs/{logId} {
+        // All staff can read logs
+        allow read: if isUserActive(centerId);
+        
+        // System creates logs (via Cloud Functions)
+        allow create: if isUserActive(centerId);
+        
+        // No updates or deletes (immutable audit trail)
+        allow update, delete: if false;
+      }
+    }
+  }
+}

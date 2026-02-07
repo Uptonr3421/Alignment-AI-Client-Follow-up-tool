@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A free client follow-up automation system for the Cleveland LGBTQ Center - a gift from Alignment AI">
+    <meta name="theme-color" content="#E6511A">
+    <title>A Gift for the Cleveland LGBTQ Center | Alignment AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --orange: #E6511A;
+            --orange-light: #FFF5F2;
+            --charcoal: #252422;
+            --mist: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--mist);
+        }
+        
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid rgba(37, 36, 34, 0.1);
+            padding: 20px 40px;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .logo {
+            height: 40px;
+            max-width: 200px;
+            object-fit: contain;
+        }
+        
+        .logo-fallback {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+        
+        .plus {
+            font-size: 24px;
+            color: var(--orange);
+            font-weight: 300;
+        }
+        
+        .header-contact {
+            text-align: right;
+            font-size: 13px;
+            color: rgba(37, 36, 34, 0.6);
+        }
+        
+        .header-contact strong {
+            display: block;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-contact {
+                text-align: center;
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .plus {
+                transform: rotate(90deg);
+            }
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--orange) 0%, #c9440f 100%);
+            color: var(--white);
+            padding: 80px 40px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 strong {
+            font-weight: 500;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .hero-intro {
+            font-size: 16px;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+        }
+        
+        /* Main Content */
+        .main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .main {
+                padding: 40px 20px;
+            }
+        }
+        
+        /* Gift Box */
+        .gift-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .gift-box {
+                padding: 30px 20px;
+            }
+        }
+        
+        .gift-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .gift-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--orange-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+        }
+        
+        .gift-header h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        
+        .gift-header p {
+            color: rgba(37, 36, 34, 0.6);
+        }
+        
+        /* Download Options */
+        .download-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .download-card {
+            border: 2px solid rgba(37, 36, 34, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .download-card:hover {
+            border-color: var(--orange);
+            box-shadow: 0 8px 24px rgba(230, 81, 26, 0.1);
+        }
+        
+        .download-card.recommended {
+            border-color: var(--orange);
+            background: var(--orange-light);
+        }
+        
+        .download-card.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .download-card.disabled .download-btn {
+            background: #ccc;
+            pointer-events: none;
+        }
+        
+        .download-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .download-card h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .download-card p {
+            font-size: 14px;
+            color: rgba(37, 36, 34, 0.6);
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .download-btn:hover {
+            background: #c9440f;
+        }
+        
+        .download-btn.secondary {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+        }
+        
+        .download-btn.secondary:hover {
+            background: var(--orange);
+            color: var(--white);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        
+        .coming-soon {
+            display: inline-block;
+            background: rgba(37, 36, 34, 0.1);
+            color: rgba(37, 36, 34, 0.6);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        
+        /* Setup Steps */
+        .setup-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .setup-section {
+                padding: 30px 20px;
+            }
+        }
+        
+        .setup-section h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .step {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        
+        @media (max-width: 768px) {
+            .step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .step-content p {
+            color: rgba(37, 36, 34, 0.7);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        
+        .step-image {
+            background: var(--mist);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 12px;
+            text-align: center;
+            color: rgba(37, 36, 34, 0.4);
+            font-size: 13px;
+        }
+        
+        .step-image img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        
+        /* Features */
+        .features-section {
+            margin-bottom: 50px;
+        }
+        
+        .features-section h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        
+        .feature {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        
+        .feature h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .feature p {
+            font-size: 14px;
+            color: rgba(37, 36, 34, 0.6);
+        }
+        
+        /* About Section */
+        .about-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 30px 20px;
+            }
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .about-content h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            color: rgba(37, 36, 34, 0.7);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .credential {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(37, 36, 34, 0.6);
+        }
+        
+        .credential img {
+            height: 24px;
+        }
+        
+        .about-image {
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .about-image-placeholder {
+            background: var(--mist);
+            border-radius: 12px;
+            padding: 60px 20px;
+            color: rgba(37, 36, 34, 0.4);
+            font-size: 14px;
+        }
+        
+        /* Contact */
+        .contact-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--charcoal);
+            color: var(--white);
+            border-radius: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 40px 20px;
+            }
+        }
+        
+        .contact-section h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        
+        .contact-section > p {
+            opacity: 0.8;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-item strong {
+            display: block;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            margin-bottom: 4px;
+        }
+        
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .closing {
+            font-style: italic;
+            opacity: 0.7;
+            font-size: 15px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(37, 36, 34, 0.4);
+            font-size: 13px;
+        }
+        
+        .footer img {
+            height: 30px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        /* Download Status */
+        .download-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            display: none;
+        }
+        
+        .download-status.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        
+        .download-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="alignment-ai-logo.png" alt="Alignment AI" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <span class="logo-fallback" style="display:none;">Alignment AI</span>
+                <span class="plus">+</span>
+                <img src="lgbt-center-logo.png" alt="LGBT Community Center Greater Cleveland" class="logo" style="height: 50px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <span class="logo-fallback" style="display:none;">Cleveland LGBTQ Center</span>
+            </div>
+            <div class="header-contact">
+                <strong>Upton Rand</strong>
+                216-200-7861 | hello@alignment-ai.io
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>A Gift for <strong>Cleveland LGBTQ Center</strong></h1>
+            <p class="hero-subtitle">Client Follow-Up Automation System</p>
+            <p class="hero-intro">
+                We deeply admire the vital work you do supporting our LGBTQ+ community in Northeast Ohio. 
+                This automation system is our way of saying thank you—and ensuring no one falls through the cracks.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Gift Box -->
+        <div class="gift-box">
+            <div class="gift-header">
+                <div class="gift-icon">🎁</div>
+                <h2>Your System is Ready</h2>
+                <p>Everything you need to automate client follow-ups</p>
+            </div>
+
+            <div class="download-options">
+                <div class="download-card recommended" id="windows-card">
+                    <span class="badge">Recommended</span>
+                    <div class="download-icon">🖥️</div>
+                    <h3>Windows Desktop App</h3>
+                    <p>Installs on one computer. Works offline. Perfect for small teams. Data stays local.</p>
+                    <a href="https://github.com/alignment-ai/lgbtq-center-automation/releases/latest/download/LGBTQ-Center-Automation-Setup.exe" class="download-btn" download onclick="return checkDownload(this);">
+                        Download for Windows
+                    </a>
+                    <div class="download-status" id="download-status"></div>
+                </div>
+
+                <div class="download-card">
+                    <span class="coming-soon">Coming Soon</span>
+                    <div class="download-icon">☁️</div>
+                    <h3>Web Application</h3>
+                    <p>Access from any device. Multiple staff can log in. Requires free cloud setup.</p>
+                    <a href="#setup" class="download-btn secondary">
+                        View Setup Guide
+                    </a>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(37,36,34,0.08);">
+                <p style="font-size: 13px; color: rgba(37,36,34,0.5);">
+                    💡 <strong>Not sure which to choose?</strong> The Windows Desktop app is easiest—just download and double-click. 
+                    Choose Web if you need multiple staff to access from different computers.
+                </p>
+            </div>
+        </div>
+
+        <!-- Setup Steps -->
+        <section class="setup-section" id="setup">
+            <h2>Setup in 5 Minutes</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Download & Install</h3>
+                        <p>Click the download button above. Once downloaded, double-click the installer and follow the visual wizard—just like installing any other Windows program.</p>
+                        <div class="step-image">
+                            [Screenshot: Windows installer wizard]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Launch the Setup Wizard</h3>
+                        <p>Open the application from your desktop. The built-in setup wizard will guide you through connecting your Gmail and entering your center information.</p>
+                        <div class="step-image">
+                            [Screenshot: Application setup wizard with welcome screen]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Connect Gmail</h3>
+                        <p>Click "Connect Gmail" and sign in with the Google account you want to send emails from. This allows the system to send follow-ups on your behalf.</p>
+                        <div class="step-image">
+                            [Screenshot: Gmail OAuth connection screen]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Customize Templates (Optional)</h3>
+                        <p>Review the pre-written email templates. You can customize them or keep the defaults—they work great for most centers. Preview before saving.</p>
+                        <div class="step-image">
+                            [Screenshot: Email template editor with preview]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Add Your First Client</h3>
+                        <p>That's it! The system is ready. Add a test client to see the automation in action. Welcome emails send immediately, reminders schedule automatically.</p>
+                        <div class="step-image">
+                            [Screenshot: Dashboard with first client added]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features-section">
+            <h2>What You'll Get</h2>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📧</div>
+                    <h3>Automatic Emails</h3>
+                    <p>4-email sequence: welcome, reminder, no-show follow-up, and re-engagement</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Client Database</h3>
+                    <p>Track intake, appointments, status, and communication history</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Staff Dashboard</h3>
+                    <p>See today's tasks, upcoming appointments, and follow-up status at a glance</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">✏️</div>
+                    <h3>Easy Customization</h3>
+                    <p>Edit email templates without touching code—visual editor with live preview</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data stays yours. No third-party access. Full encryption.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Zero Monthly Cost</h3>
+                    <p>No subscription fees. No hidden costs. Yours forever.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Behind the Scenes -->
+        <section class="setup-section" style="background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);">
+            <h2>🔬 Behind the Scenes</h2>
+            <p style="text-align: center; color: rgba(37, 36, 34, 0.6); max-width: 600px; margin: -20px auto 40px;">
+                How this system came together—and why it works
+            </p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number" style="background: var(--charcoal);">1</div>
+                    <div class="step-content">
+                        <h3>Parallel Development Teams</h3>
+                        <p>Four specialized AI development agents worked simultaneously—backend API, frontend dashboard, Gmail integration, and documentation. Each focused on their domain while maintaining strict interface contracts.</p>
+                        <p style="font-size: 13px; color: var(--orange); font-weight: 500;">→ Result: Complete system in hours, not weeks</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number" style="background: var(--charcoal);">2</div>
+                    <div class="step-content">
+                        <h3>Production-Grade Standards</h3>
+                        <p>This isn't a prototype or proof-of-concept. We built it as production software that must work reliably for years with minimal technical support—because you don't have a dedicated IT department.</p>
+                        <p style="font-size: 13px; color: var(--orange); font-weight: 500;">→ Result: Enterprise reliability, nonprofit simplicity</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number" style="background: var(--charcoal);">3</div>
+                    <div class="step-content">
+                        <h3>Built-In Redundancy</h3>
+                        <p>Every critical system has fallback mechanisms: Gmail API primary with SMTP backup, local queue persistence, automated token refresh, and graceful degradation if services change.</p>
+                        <p style="font-size: 13px; color: var(--orange); font-weight: 500;">→ Result: Keeps working even when things change</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number" style="background: var(--charcoal);">4</div>
+                    <div class="step-content">
+                        <h3>Zero-Cost Architecture</h3>
+                        <p>Every dependency chosen has a genuinely free tier that won't suddenly require a credit card. Local SQLite option means no server needed. MIT license means you own it forever.</p>
+                        <p style="font-size: 13px; color: var(--orange); font-weight: 500;">→ Result: No surprises, no bills, no lock-in</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about-section">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>About This Gift</h2>
+                    <p>
+                        We built this system specifically for the Cleveland LGBTQ Center because we believe 
+                        mission-driven organizations deserve mission-critical technology. No one should fall 
+                        through the cracks because of missed follow-ups.
+                    </p>
+                    <p>
+                        This is a <strong>pro bono</strong> contribution. You own the software completely—source code, 
+                        data, everything. It's yours to use, modify, and keep forever at absolutely no cost.
+                    </p>
+                    <p>
+                        We know you pour your hearts into supporting our community. This is our way of 
+                        pouring back into you.
+                    </p>
+                    
+                    <div class="credentials">
+                        <div class="credential">
+                            <img src="nglcc-logo.png" alt="NGLCC Certified" onerror="this.style.display='none'">
+                            <span>NGLCC Certified LGBTBE</span>
+                        </div>
+                        <div class="credential">
+                            <span>📚 Amazon #1 Author</span>
+                        </div>
+                        <div class="credential">
+                            <span>🤖 6+ Years AI Experience</span>
+                        </div>
+                        <div class="credential">
+                            <span>📍 Cleveland-Based</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="woman-at-desk.png" alt="Staff member using the automation system" onerror="this.parentElement.innerHTML='<div class=\'about-image-placeholder\'>[Image: Staff member using the automation system]</div>'">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section">
+            <h2>We're Here to Help</h2>
+            <p>
+                Questions during setup? Need a hand? Want to discuss other ways we might support your work? 
+                Reach out anytime—we're just a call or email away.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    <a href="tel:216-200-7861">216-200-7861</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:hello@alignment-ai.io">hello@alignment-ai.io</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Website</strong>
+                    <a href="https://alignment-ai.io">alignment-ai.io</a>
+                </div>
+            </div>
+            
+            <p class="closing">
+                "We'd love to do more. If there are other ways we can support the LGBTQ+ community 
+                in Cleveland—or if you know other nonprofits who could benefit—please let us know."
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="alignment-ai-logo.png" alt="Alignment AI" onerror="this.style.display='none'">
+        <p>Built with care in Cleveland, for Cleveland.</p>
+        <p style="margin-top: 8px;">© 2026 Alignment AI | MIT License | Free Forever</p>
+    </footer>
+
+    <script>
+        // Check if download file exists
+        async function checkDownload(link) {
+            const statusDiv = document.getElementById('download-status');
+            const card = document.getElementById('windows-card');
+            
+            try {
+                const response = await fetch(link.href, { method: 'HEAD' });
+                if (!response.ok) {
+                    statusDiv.textContent = 'Download file not yet available. Please check back soon!';
+                    statusDiv.className = 'download-status error';
+                    card.classList.add('disabled');
+                    return false;
+                }
+                statusDiv.textContent = 'Download starting...';
+                statusDiv.className = 'download-status success';
+                return true;
+            } catch (e) {
+                // If we can't check (CORS, etc.), allow the download to proceed
+                return true;
+            }
+        }
+
+        // Check download availability on page load
+        window.addEventListener('load', async function() {
+            const link = document.querySelector('a[download]');
+            const card = document.getElementById('windows-card');
+            const statusDiv = document.getElementById('download-status');
+            
+            if (link) {
+                try {
+                    const response = await fetch(link.href, { method: 'HEAD' });
+                    if (!response.ok) {
+                        card.classList.add('disabled');
+                        statusDiv.textContent = 'Download coming soon - file not yet available';
+                        statusDiv.className = 'download-status error';
+                    }
+                } catch (e) {
+                    // Ignore errors - file might still be available
+                }
+            }
+        });
+    </script>
+</body>
+</html>

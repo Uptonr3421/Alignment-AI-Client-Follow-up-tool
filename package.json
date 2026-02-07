@@ -1,0 +1,52 @@
+{
+  "name": "lgbtq-center-automation",
+  "version": "1.0.0",
+  "description": "Client follow-up automation system for the Cleveland LGBTQ Center",
+  "private": true,
+  "workspaces": [
+    "src/web/frontend",
+    "src/web/backend",
+    "src/desktop"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace=src/web/backend & npm run dev --workspace=src/web/frontend",
+    "dev:desktop": "npm run tauri dev --workspace=src/desktop",
+    "build:web": "npm run build --workspace=src/web/frontend && npm run build --workspace=src/web/backend",
+    "build:desktop": "npm run tauri build --workspace=src/desktop",
+    "build:installer": "cd installer && build.bat",
+    "test": "npm run test --workspaces",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/lgbtq-center-automation.git"
+  },
+  "keywords": [
+    "nonprofit",
+    "automation",
+    "email",
+    "client-management",
+    "lgbtq",
+    "tauri",
+    "react"
+  ],
+  "author": "Alignment AI <hello@alignment-ai.io>",
+  "license": "MIT"
+}

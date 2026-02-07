@@ -1,0 +1,23 @@
+[package]
+name = "lgbtq-center-desktop"
+version = "1.0.0"
+description = "Client follow-up automation for Cleveland LGBTQ Center"
+authors = ["Alignment AI <hello@alignment-ai.io>"]
+license = "MIT"
+repository = "https://github.com/YOUR_USERNAME/lgbtq-center-automation"
+edition = "2021"
+rust-version = "1.70"
+
+[build-dependencies]
+tauri-build = { version = "1.5.0", features = [] }
+
+[dependencies]
+tauri = { version = "1.5.0", features = ["shell-open"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rusqlite = { version = "0.30", features = ["bundled"] }
+chrono = "0.4"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

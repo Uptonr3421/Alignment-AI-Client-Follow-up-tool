@@ -1,0 +1,6 @@
+id,name,email,phone,intakeDate,appointmentDate,status,notes
+1,Alex Johnson,alex.j@example.com,216-555-0101,2026-01-15,2026-01-22,active,First-time client
+2,Jordan Smith,jordan.s@example.com,216-555-0102,2026-01-16,2026-01-25,active,Referred by partner org
+3,Taylor Brown,taylor.b@example.com,216-555-0103,2026-01-17,,needs-followup,Awaiting appointment scheduling
+4,Morgan Davis,morgan.d@example.com,216-555-0104,2026-01-10,2026-01-20,no-show,Rescheduled for next week
+5,Casey Wilson,casey.w@example.com,216-555-0105,2026-01-18,2026-01-30,active,Requested specific counselor

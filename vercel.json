@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "name": "lgbtq-center-automation",
+  "builds": [
+    {
+      "src": "src/web/backend/src/index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "src/web/frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "src/web/backend/src/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "src/web/frontend/dist/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

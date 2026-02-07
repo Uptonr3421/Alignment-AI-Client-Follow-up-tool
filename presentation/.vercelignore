@@ -1,0 +1,10 @@
+# Ignore documentation files
+README.md
+DEPLOY.md
+DEPLOYMENT_CHECKLIST.md
+CASE_STUDY_HANDOFF.md
+*.md
+
+# DO NOT ignore the installer
+!LGBTQ-Center-Automation-Setup.exe
+!*.exe
