@@ -53,14 +53,14 @@ const CTA = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-white/80">
             <a 
               href="tel:216-200-7861" 
-              className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+              className="aaa-link flex items-center gap-2 hover:text-white transition-colors duration-200"
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
               <span className="font-mono">216-200-7861</span>
             </a>
             <a 
               href="mailto:hello@alignment-ai.io" 
-              className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+              className="aaa-link flex items-center gap-2 hover:text-white transition-colors duration-200"
             >
               <Mail className="w-4 h-4" aria-hidden="true" />
               <span className="font-mono">hello@alignment-ai.io</span>
@@ -69,7 +69,7 @@ const CTA = () => {
               href="https://alignment-ai.io" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+              className="aaa-link flex items-center gap-2 hover:text-white transition-colors duration-200"
             >
               <Calendar className="w-4 h-4" aria-hidden="true" />
               <span>alignment-ai.io</span>

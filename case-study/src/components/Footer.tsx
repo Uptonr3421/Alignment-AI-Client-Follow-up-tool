@@ -35,7 +35,7 @@ const Footer = () => {
                 <li key={link.href}>
                   <a 
                     href={link.href}
-                    className="text-mist-400 hover:text-orange transition-colors duration-200 text-sm"
+                    className="aaa-link text-mist-400 hover:text-orange transition-colors duration-200 text-sm"
                   >
                     {link.label}
                   </a>
@@ -83,7 +83,7 @@ const Footer = () => {
               href="https://alignment-ai.io"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-mist-400 hover:text-orange transition-colors duration-200 text-sm"
+              className="aaa-link inline-flex items-center gap-1 text-mist-400 hover:text-orange transition-colors duration-200 text-sm"
             >
               alignment-ai.io
               <ExternalLink className="w-3 h-3" aria-hidden="true" />

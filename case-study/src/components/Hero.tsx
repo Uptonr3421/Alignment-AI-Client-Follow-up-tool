@@ -35,15 +35,22 @@ const Hero = () => {
           <span className="text-orange font-mono text-sm uppercase tracking-wider">Pro Bono Project</span>
         </motion.div>
 
-        {/* Main headline */}
-        <motion.h1
+        <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-mist mb-6 leading-tight"
+          className="h1-visual-style"
         >
-          <span className="block">No One Falls</span>
-          <span className="block text-orange">Through the Cracks</span>
+          Intelligence is a quiet decision.
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="seo-h1 text-mist-300 mb-6"
+        >
+          Custom AI Tools for Small Business
         </motion.h1>
 
         {/* Subheadline */}
