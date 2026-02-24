@@ -107,7 +107,7 @@ function App() {
     "name": "Alignment AI",
     "url": "https://alignment-ai.io",
     "telephone": "+1-216-200-7861",
-    "email": "hello@alignment-ai.io",
+    "email": "contact@alignment-ai.io",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Cleveland",

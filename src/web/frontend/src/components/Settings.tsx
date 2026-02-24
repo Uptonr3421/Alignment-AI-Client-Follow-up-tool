@@ -352,11 +352,11 @@ export const Settings: React.FC<SettingsProps> = ({
             216-200-7861
           </a>
           <a 
-            href="mailto:hello@alignment-ai.io" 
+            href="mailto:contact@alignment-ai.io" 
             className="flex items-center gap-2 text-[#E6511A] hover:underline"
           >
             <Mail size={16} />
-            hello@alignment-ai.io
+            contact@alignment-ai.io
           </a>
         </div>
       </section>
