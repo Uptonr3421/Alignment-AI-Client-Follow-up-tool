@@ -1073,7 +1073,7 @@ export function SetupWizard({ onComplete }: SetupWizardProps) {
               Call 216-200-7861
             </a>
             {' '}or{' '}
-            <a href="mailto:hello@alignment-ai.io" className="text-[#E6511A] hover:underline">
+            <a href="mailto:contact@alignment-ai.io" className="text-[#E6511A] hover:underline">
               email us
             </a>
           </p>

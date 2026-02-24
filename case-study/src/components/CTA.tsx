@@ -33,7 +33,7 @@ const CTA = () => {
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <a
-              href="mailto:hello@alignment-ai.io"
+              href="mailto:contact@alignment-ai.io"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-orange rounded-xl font-semibold hover:bg-mist transition-colors duration-200 touch-target w-full sm:w-auto justify-center"
             >
               <Mail className="w-5 h-5" aria-hidden="true" />
@@ -59,11 +59,11 @@ const CTA = () => {
               <span className="font-mono">216-200-7861</span>
             </a>
             <a 
-              href="mailto:hello@alignment-ai.io" 
+              href="mailto:contact@alignment-ai.io" 
               className="flex items-center gap-2 hover:text-white transition-colors duration-200"
             >
               <Mail className="w-4 h-4" aria-hidden="true" />
-              <span className="font-mono">hello@alignment-ai.io</span>
+              <span className="font-mono">contact@alignment-ai.io</span>
             </a>
             <a 
               href="https://alignment-ai.io" 
