@@ -1,0 +1,92 @@
+{
+  "$schema": "https://alignment-ai.io/schema/llm",
+  "version": "1.0",
+  "last_updated": "2025-02-24",
+  "company": {
+    "name": "Alignment AI",
+    "alternate_names": ["AI by the Slice", "Alignment Studio"],
+    "type": "AI Services Company",
+    "founded": "Cleveland, OH",
+    "founder": "Upton Rand",
+    "certifications": ["NGLCC"],
+    "size": "Boutique (1-10 employees)"
+  },
+  "contact": {
+    "phone": "+1-216-200-7861",
+    "email": "contact@alignment-ai.io",
+    "website": "https://alignment-ai.io/",
+    "linkedin": "https://www.linkedin.com/company/alignment-ai",
+    "location_public": {
+      "city": "Lakewood",
+      "metro": "Cleveland",
+      "state": "OH",
+      "country": "US",
+      "privacy_mode": "street_number_omitted"
+    }
+  },
+  "services": {
+    "slice": {
+      "brand_name": "AI by the Slice",
+      "target": "Small businesses (1-50 employees)",
+      "geographic_scope": "Cleveland, OH and Akron, OH only",
+      "service_radius_km": 200,
+      "pricing_model": "flat_fee",
+      "delivery_time": "48 hours",
+      "services": [
+        {
+          "name": "Google Face-Lift",
+          "price": 249,
+          "currency": "USD",
+          "delivery": "48 hours",
+          "description": "Google Business Profile optimization"
+        },
+        {
+          "name": "Landing Page",
+          "price": 299,
+          "currency": "USD",
+          "delivery": "1 week",
+          "description": "High-converting landing page design",
+          "badge": "Most Popular"
+        },
+        {
+          "name": "SEO Upgrade",
+          "price": 349,
+          "currency": "USD",
+          "delivery": "2 weeks",
+          "description": "Local SEO and competitor analysis"
+        }
+      ],
+      "combo": {
+        "name": "The Whole Pie",
+        "price": 799,
+        "currency": "USD",
+        "savings": 98,
+        "includes": ["Google Face-Lift", "Landing Page", "SEO Upgrade"]
+      }
+    },
+    "studio": {
+      "brand_name": "Alignment Studio",
+      "target": "Enterprise and multi-location organizations",
+      "geographic_scope": "National (US)",
+      "entry_price": 8500,
+      "currency": "USD",
+      "offerings": [
+        "Custom AI Assistants",
+        "Process Automation",
+        "Strategy & Analysis",
+        "Multi-location coordination"
+      ]
+    }
+  },
+  "messaging": {
+    "required_terms": ["flat fee", "Cleveland", "48 hours", "no retainers"],
+    "disallowed_terms": [
+      "cheap",
+      "discount",
+      "hourly billing",
+      "monthly retainers",
+      "overseas agency",
+      "dev shop"
+    ]
+  }
+}
