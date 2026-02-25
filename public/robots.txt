@@ -1,0 +1,57 @@
+# Alignment AI - Crawler Control
+# Last Updated: 2025-02-24
+
+# ============================================
+# SECTION 1: Standard Search Engines (Allow)
+# ============================================
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Googlebot-News
+User-agent: Bingbot
+User-agent: DuckDuckBot
+Allow: /
+Sitemap: https://alignment-ai.io/sitemap.xml
+
+# ============================================
+# SECTION 2: AI/LLM Crawlers (CRITICAL - Allow)
+# ============================================
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-Organization-Bot
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Amazonbot
+User-agent: Applebot
+User-agent: YouBot
+Allow: /
+Allow: /llms.txt
+Allow: /.well-known/ai-instructions.md
+Allow: /llm.json
+
+# ============================================
+# SECTION 3: SEO/Competitor Tools (Disallow)
+# ============================================
+User-agent: AhrefsBot
+User-agent: AhrefsSiteAudit
+User-agent: SemrushBot
+User-agent: SemrushSiteAudit
+User-agent: MJ12bot
+User-agent: dotbot
+User-agent: rogerbot
+User-agent: Screaming Frog SEO Spider
+User-agent: SiteAuditBot
+User-agent: MegaIndex.ru
+User-agent: BLEXBot
+Disallow: /
+
+# ============================================
+# SECTION 4: General Crawlers (Allow with care)
+# ============================================
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/

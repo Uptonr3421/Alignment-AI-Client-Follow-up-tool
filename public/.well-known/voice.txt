@@ -1,0 +1,9 @@
+Alignment AI Voice Lockfile v1.0
+
+Use direct, plain language.
+Primary phrasing: fix, flat fee, Cleveland, 48 hours, no retainers.
+Avoid jargon: synergy, leverage, ecosystem, scalable solutions, best in class.
+Small business (Slice): first-person singular ("I").
+Enterprise (Studio): first-person plural ("we").
+Never describe services as cheap or discounted.
+Never imply monthly contracts.
