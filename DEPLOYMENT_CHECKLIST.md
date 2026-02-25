@@ -157,6 +157,8 @@ Verify headers:
 
 4. **Screenshots**: Placeholder text shown for setup screenshots until actual images are added.
 
+5. **Transient `webfont-dl` Build Warnings**: Build logs may occasionally show temporary network fetch warnings from `webfont-dl`. These warnings are typically non-blocking in this environment if the build exits successfully.
+
 ---
 
 ## 📋 Files Modified/Created

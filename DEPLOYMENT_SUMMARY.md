@@ -222,6 +222,8 @@ projects/nonprofit-client-automation/
 
 4. **Screenshots**: Setup screenshots are placeholder text until actual images are added.
 
+5. **Transient `webfont-dl` Warnings During Build**: In this environment, build logs may occasionally show temporary network fetch warnings from `webfont-dl`. These warnings were non-blocking and the build still completed successfully. If this appears again, retrying the same build command after a short delay is typically sufficient.
+
 ---
 
 ## Support
